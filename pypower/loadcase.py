@@ -180,7 +180,8 @@ def loadcase(casefile,
 
             ## all fields present, copy to ppc
             ppc = deepcopy(s)
-            if not hasattr(ppc, 'version'):  ## hmm, struct with no 'version' field
+            #if not hasattr(ppc, 'version'):  ## hmm, struct with no 'version' field => original code from PYPOWER
+            if 'version' not in ppc: # suggested changes from ChatGPTO3 to deal with version issues
                 if ppc['gen'].shape[1] < 21:    ## version 2 has 21 or 25 cols
                     ppc['version'] = '1'
                 else:
